@@ -1,7 +1,7 @@
 # Linkero
 ## Copyright © 2016 Ingran Engineering ###
 
-![logo](http://ingran.es:8081/uploads/project/avatar/22/Link_Slash.png)
+<!-- ![logo](http://ingran.es:8081/uploads/project/avatar/22/Link_Slash.png) -->
 
 Restful API for external requests
 
@@ -14,12 +14,19 @@ The support for Python 2 will be deprecated in future releases and it is recomme
 
 * Install last version of Python 2
 * Install flask-restful Python library
+* Install flask-sqlalchemy Python library
+* Install flask-httpauth Python library
+* Install passlib Python library
 
 #### **Python 3**
 
 * Install last version of Python 3
 * Install flask-restful Python library
+* Install flask-sqlalchemy Python library
+* Install flask-httpauth Python library
+* Install passlib Python library
 
 ### **Documentation**
 
-More information available in the **[WIKI](http://ingran.es:8081/rdcelis/linkero/wikis/home)**.
+Coming soon...
+<!-- More information available in the **[WIKI](http://ingran.es:8081/rdcelis/linkero/wikis/home)**. -->
