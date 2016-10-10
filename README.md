@@ -28,5 +28,4 @@ The support for Python 2 will be deprecated in future releases and it is recomme
 
 ### **Documentation**
 
-Coming soon...
-<!-- More information available in the **[WIKI](http://ingran.es:8081/rdcelis/linkero/wikis/home)**. -->
+More information available in the **[WIKI](https://github.com/RDCH106/linkero/wiki/home)**.
