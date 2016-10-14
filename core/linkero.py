@@ -101,6 +101,7 @@ def new_user():
 
 
 @app.route('/api/users/<int:id>')
+@auth.login_required
 def get_user(id):
     user = User.query.get(id)
     if not user:
