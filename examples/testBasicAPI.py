@@ -53,6 +53,6 @@ class TodoList(linkero.Resource):
 ##
 ## Actually setup the Api resource routing here
 ##
-def loadTestAPI():
+def loadTestBasicAPI():
     linkero.api.add_resource(TodoList, '/todos')
     linkero.api.add_resource(Todo, '/todos/<todo_id>')
