@@ -5,6 +5,8 @@
 
 Restful API for external requests
 
+[![Build Status](https://travis-ci.org/RDCH106/linkero.svg?branch=master)](https://travis-ci.org/RDCH106/linkero)
+
 ### Requeriments
 
 Linkero is compatible with Python 2 and Python 3. 
