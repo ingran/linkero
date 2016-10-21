@@ -13,3 +13,4 @@ install: "pip install -r requirements.txt"
 script: 
     - "python tools.py < ./.travis/tools/tools_test0.txt"
     - "python tools.py < ./.travis/tools/tools_test1.txt"
+    - "python ./.travis/linkero/linkero_test0.py"
