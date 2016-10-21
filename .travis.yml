@@ -11,5 +11,5 @@ python:
 install: "pip install -r requirements.txt"
 # command to run tests
 script: 
-    - "python tools.py < .travis/tools/tools_test0.txt"
-    - "python tools.py < .travis/tools/tools_test1.txt"
+    - "python tools.py < ./.travis/tools/tools_test0.txt"
+    - "python tools.py < ./.travis/tools/tools_test1.txt"
