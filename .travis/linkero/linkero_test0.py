@@ -7,7 +7,7 @@ time.sleep(10)
 p.kill()
 p.wait()
 print("\nReturned Code:\n")
-if p.returncode == None:
+if p.returncode == -9:
     print(0)
     exit(0)
 else:
