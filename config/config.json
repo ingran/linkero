@@ -12,8 +12,8 @@
 		"port" : 5000
 	},
 	"API" : {
-		"pythonScriptsAPI" : {
-			"numItems" : "5000"
+		"testAPI" : {
+			
 		}
 	}
 }
