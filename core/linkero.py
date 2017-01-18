@@ -121,10 +121,18 @@ def get_resource():
     return jsonify({'data': 'Hello, %s!' % g.user.username})
 
 def checkUser(vusers):
-    if auth.username() in vusers:
-        return True
+    # Check if it is a username or token auth
+    user = User.verify_auth_token(auth.username())
+    if user:
+        if user.username in vusers:
+            return True
+        else:
+            return False
     else:
-        return False
+        if auth.username() in vusers:
+            return True
+        else:
+            return False
 
 
 def run():
