@@ -120,6 +120,14 @@ def get_auth_token():
 def get_resource():
     return jsonify({'data': 'Hello, %s!' % g.user.username})
 
+def checkUser(vusers):
+    print(auth.username())
+    print(vusers)
+    if auth.username() in vusers:
+        return True
+    else:
+        return False
+
 
 def run():
     printWellcome()
