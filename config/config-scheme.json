@@ -13,7 +13,11 @@
 	},
 	"API" : {
 		"testAPI" : {
+			"param1" : "5000"
+		},
+		"testPrivAPI" : {
 			"param1" : "5000",
+			"param2" : "2",
 			"validUsers": ["user1","user2"]
 		}
 	}
