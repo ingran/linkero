@@ -124,15 +124,9 @@ def checkUser(vusers):
     # Check if it is a username or token auth
     user = User.verify_auth_token(auth.username())
     if user:
-        if user.username in vusers:
-            return True
-        else:
-            return False
+        return bool(user.username in vusers)
     else:
-        if auth.username() in vusers:
-            return True
-        else:
-            return False
+        return bool(auth.username() in vusers)
 
 
 def run():
