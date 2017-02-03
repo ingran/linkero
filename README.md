@@ -5,7 +5,7 @@
 
 Restful API for external requests
 
-[![Build Status](https://travis-ci.org/RDCH106/linkero.svg?branch=master)](https://travis-ci.org/RDCH106/linkero)
+[![Build Status](https://travis-ci.org/ingran/linkero.svg?branch=master)](https://travis-ci.org/ingran/linkero)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9deefcd29e4b4f5ba678bdbdeaaeef36)](https://www.codacy.com/app/RDCH106/linkero?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=RDCH106/linkero&amp;utm_campaign=Badge_Grade)
 
 ### Requeriments
