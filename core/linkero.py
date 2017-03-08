@@ -2,7 +2,7 @@
 
 import os
 from flask import Flask, request, jsonify, g, url_for
-from flask_restful import reqparse, abort, Api, Resource
+from flask_restful import reqparse, abort, Api, Resource, fields, marshal
 from flask_sqlalchemy import SQLAlchemy
 from flask_httpauth import HTTPBasicAuth
 from passlib.apps import custom_app_context as pwd_context
@@ -10,6 +10,7 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 from core.common import printWellcome, bcolors, loadConfig, loadMode
 import logging
+import re
 
 
 # initialization
@@ -128,6 +129,17 @@ def checkUser(vusers):
     else:
         return bool(auth.username() in vusers)
 
+def getDomain(request):
+    pattern_url_base = re.compile("(http|https):\/\/[a-zA-Z0-9_.]+:[0-9]*")
+    return pattern_url_base.search(str(request)).group()
+
+def getResourceURL(endpoint, selector_name, selector_value, absolute = False):
+    uri_field = {'url': fields.Url(endpoint)}
+    selector = {selector_name: selector_value}
+    if absolute:
+        return getDomain(request) + marshal(selector, uri_field)["url"]
+    else:
+        return marshal(selector, uri_field)["url"]
 
 def run():
     printWellcome()
