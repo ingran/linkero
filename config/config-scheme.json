@@ -9,8 +9,15 @@
 	},
 	"host" : {
 		"ip" : "0.0.0.0",
-		"port" : 5000
+		"port" : 5000,
+        "processes" : 1,
+        "threaded": false
 	},
+    "SSL" : {
+        "activate" : false,
+        "certificate" : "ssl/cert_file.crt",
+        "key" : "ssl/key_file.key"
+    },
 	"API" : {
 		"testAPI" : {
 			"param1" : "5000"

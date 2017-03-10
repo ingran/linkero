@@ -149,4 +149,10 @@ def run():
         print(bcolors.WARNING+"Creating SQlite Database"+bcolors.ENDC)
         print(bcolors.OKBLUE+file_path+db_path+bcolors.ENDC)
         db.create_all()
-    app.run(host=config["host"]["ip"], port=config["host"]["port"], debug=debug)
+    if config["SSL"]["activate"]:
+        app.run(host=config["host"]["ip"], port=config["host"]["port"], debug=debug,
+                processes=config["host"]["processes"], threaded=config["host"]["threaded"],
+                ssl_context=(config["SSL"]["certificate"], config["SSL"]["key"]))
+    else:
+        app.run(host=config["host"]["ip"], port=config["host"]["port"], debug=debug,
+                processes=config["host"]["processes"], threaded=config["host"]["threaded"])
