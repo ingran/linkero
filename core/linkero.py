@@ -141,12 +141,22 @@ def getResourceURL(endpoint, selector_name, selector_value, absolute = False):
     else:
         return marshal(selector, uri_field)["url"]
 
-def run():
-    printWellcome()
+
+def createDB():
     db_path = str(app.config['SQLALCHEMY_DATABASE_URI'].split('//')[1])
     file_path = os.path.dirname(os.path.realpath(__file__))
-    if not os.path.exists(file_path+db_path):
-        print(bcolors.WARNING+"Creating SQlite Database"+bcolors.ENDC)
-        print(bcolors.OKBLUE+file_path+db_path+bcolors.ENDC)
+    if not os.path.exists(file_path + db_path):
+        print(bcolors.WARNING + "Creating SQlite Database" + bcolors.ENDC)
+        print(bcolors.OKBLUE + file_path + db_path + bcolors.ENDC)
         db.create_all()
-    app.run(host=config["host"]["ip"], port=config["host"]["port"], debug=debug)
+
+def run():
+    printWellcome()
+    createDB()
+    if config["SSL"]["activate"]:
+        app.run(host=config["host"]["ip"], port=config["host"]["port"], debug=debug,
+                processes=config["host"]["processes"], threaded=config["host"]["threaded"],
+                ssl_context=(config["SSL"]["certificate"], config["SSL"]["key"]))
+    else:
+        app.run(host=config["host"]["ip"], port=config["host"]["port"], debug=debug,
+                processes=config["host"]["processes"], threaded=config["host"]["threaded"])
