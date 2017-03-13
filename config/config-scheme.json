@@ -18,6 +18,9 @@
         "certificate" : "ssl/cert_file.crt",
         "key" : "ssl/key_file.key"
     },
+    "gevent" : {
+        "spawn" : 10000
+    },
 	"API" : {
 		"testAPI" : {
 			"param1" : "5000"
