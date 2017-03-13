@@ -21,6 +21,7 @@ The support for Python 2 will be deprecated in future releases and it is recomme
 * Install flask-httpauth Python library
 * Install passlib Python library
 * Install itsdangerous Python library
+* Install gevent Python library
 
 #### **Python 3**
 
@@ -30,6 +31,7 @@ The support for Python 2 will be deprecated in future releases and it is recomme
 * Install flask-httpauth Python library
 * Install passlib Python library
 * Install itsdangerous Python library
+* Install gevent Python library
 
 ### **Documentation**
 
