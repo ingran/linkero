@@ -22,6 +22,7 @@ The support for Python 2 will be deprecated in future releases and it is recomme
 * Install passlib Python library
 * Install itsdangerous Python library
 * Install gevent Python library
+* Install waitress Python library
 
 #### **Python 3**
 
@@ -32,6 +33,7 @@ The support for Python 2 will be deprecated in future releases and it is recomme
 * Install passlib Python library
 * Install itsdangerous Python library
 * Install gevent Python library
+* Install waitress Python library
 
 ### **Documentation**
 

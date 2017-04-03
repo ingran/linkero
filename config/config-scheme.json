@@ -21,6 +21,10 @@
     "gevent" : {
         "spawn" : 10000
     },
+    "waitress" : {
+        "threads" : 4,
+        "spawn" : 1000
+    },
 	"API" : {
 		"testAPI" : {
 			"param1" : "5000"

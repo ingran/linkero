@@ -4,3 +4,4 @@ flask-httpauth
 passlib
 itsdangerous
 gevent
+waitress
