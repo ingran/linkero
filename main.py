@@ -13,3 +13,5 @@ examples.testAPI.loadTestAPI()
 
 # 4) Run Linkero
 linkero.run()
+#gevent.run(linkero.app)
+#waitress.run(linkero.app)
