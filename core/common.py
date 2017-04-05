@@ -3,8 +3,10 @@
 import logging
 import json
 from submodules.SimplePythonTools.common import bcolors
+import os
+from shutil import copyfile
 
-version = "0.7.1"
+version = "0.7.2"
 
 def printWellcome():
     print(bcolors.HEADER+"")
@@ -34,6 +36,10 @@ def loadMode():
                 exit()
     except IOError:
         print(bcolors.WARNING+"Error loading config.json!"+bcolors.ENDC)
+        if not os.path.exists('config'):
+            os.makedirs('config')
+        copyfile(os.path.dirname(__file__)+'/../config/config.json', 'config/config.json')
+        print(bcolors.WARNING+"\nDefault config.json generated! Try again."+bcolors.ENDC)
         exit()
 
 def loadConfig(logger):
@@ -49,7 +55,7 @@ def loadConfig(logger):
             config = json.load(config_file)
             logger.info("Loaded: config/config.json")
     except IOError:
-        print("Error loading config.json!")
+        print(bcolors.WARNING+"Error loading config.json!"+bcolors.ENDC)
         exit()
 
     print(bcolors.ENDC)
