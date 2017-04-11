@@ -133,7 +133,10 @@ def getDomain(request):
     pattern_url_base = re.compile("(http|https):\/\/[a-zA-Z0-9_.]+:[0-9]*")
     return pattern_url_base.search(str(request)).group()
 
-def getResourceURL(endpoint, selector_name, selector_value, absolute = False):
+def getResourceURL(endpoint, selector_name = None, selector_value = None, absolute = False):
+    if selector_name is None and selector_value is None:
+        selector_name = "dummy_RDCH106"
+        selector_value = "dummy_RDCH106"
     uri_field = {'url': fields.Url(endpoint)}
     selector = {selector_name: selector_value}
     if absolute:
