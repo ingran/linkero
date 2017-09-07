@@ -2,7 +2,7 @@
 
 import logging
 import json
-from submodules.SimplePythonTools.common import bcolors
+import platform
 import os
 from shutil import copyfile
 
@@ -60,3 +60,19 @@ def loadConfig(logger):
 
     print(bcolors.ENDC)
     return (config)
+
+if os.name == 'nt' and platform.release() == '10' and platform.version() >= '10.0.14393':
+    # Fix ANSI color in Windows 10 version 10.0.14393 (Windows Anniversary Update)
+    import ctypes
+    kernel32 = ctypes.windll.kernel32
+    kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
