@@ -1,7 +1,17 @@
-from distutils.core import setup
+from setuptools import setup
 from linkero import Metadata
 
 metadata = Metadata()
+
+def requirements():
+    """Build the requirements list for this project"""
+    requirements_list = []
+
+    with open('requirements.txt') as requirements:
+        for install in requirements:
+            requirements_list.append(install.strip())
+
+    return requirements_list
 
 long_description = """
 Restful API for external requests
@@ -11,6 +21,7 @@ setup(
     name = 'linkero',
     packages = ['linkero', 'linkero.core', 'linkero.core.gateway', 'linkero.config', 'linkero.tools'],
     package_data={'linkero': ['config/config.json']},
+    install_requires=requirements(),
     version = metadata.get_version(),
     license = 'AGPL v3',
     description = 'Restful API for external requests',

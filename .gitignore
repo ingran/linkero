@@ -4,5 +4,6 @@ __pycache__/
 *.sqlite
 dist
 build
+linkero.egg-info
 config.json
 !linkero/config/config.json
