@@ -4,3 +4,5 @@ __pycache__/
 *.sqlite
 dist
 build
+config.json
+!linkero/config/config.json
