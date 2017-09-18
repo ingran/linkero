@@ -8,7 +8,7 @@ from flask_httpauth import HTTPBasicAuth
 from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
-from linkero.core.common import printWellcome, bcolors, loadConfig, loadMode
+from .common import printWellcome, bcolors, loadConfig, loadMode
 import logging
 import re
 
