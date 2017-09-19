@@ -5,9 +5,18 @@ import json
 import platform
 import os
 from shutil import copyfile
-from linkero import Metadata
 
-version = Metadata().get_version()
+
+class Metadata:
+    def __init__(self):
+        self.__version__ = '0.9.1'
+        self.__author__ = 'Rubén de Celis Hernández'
+
+    def get_version(self):
+        return self.__version__
+    def get_author(self):
+        return self.__author__
+
 
 def printWellcome():
     print(bcolors.HEADER+"")
@@ -23,7 +32,7 @@ def printWellcome():
     print("              |___/                    "+bcolors.WARNING+"   '.||.'   "+bcolors.OKBLUE)
     print(""+bcolors.ENDC)
     print("                                        Engineering  ")
-    print(" v"+version+bcolors.HEADER+"")
+    print(" v"+Metadata().get_version()+bcolors.HEADER+"")
     print("-----------------------------------------------------")
     print(""+bcolors.ENDC)
 

@@ -1,5 +1,5 @@
 from setuptools import setup
-from linkero import Metadata
+from linkero.core.common import Metadata
 
 metadata = Metadata()
 
