@@ -61,6 +61,10 @@ def loadConfig(logger):
     print(bcolors.ENDC)
     return (config)
 
+def resolveRelativeWorkingDirectory(sqlite_path):
+    if sqlite_path.find("///", 7) > 0 and sqlite_path.find("////", 7) == -1 and sqlite_path.find(":", 7) == -1:
+        return sqlite_path.replace("///", ("///"+os.getcwd()+"/"), 1)
+
 if os.name == 'nt' and platform.release() == '10' and platform.version() >= '10.0.14393':
     # Fix ANSI color in Windows 10 version 10.0.14393 (Windows Anniversary Update)
     import ctypes
