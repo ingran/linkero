@@ -5,8 +5,9 @@ import json
 import platform
 import os
 from shutil import copyfile
+from linkero import Metadata
 
-version = "0.7.2"
+version = Metadata().get_version()
 
 def printWellcome():
     print(bcolors.HEADER+"")
