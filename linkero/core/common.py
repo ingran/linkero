@@ -5,6 +5,7 @@ import json
 import platform
 import os
 from shutil import copyfile
+from .ascii import ascii_warning
 
 
 class Metadata:
@@ -74,6 +75,16 @@ def loadConfig(logger):
 def resolveRelativeWorkingDirectory(sqlite_path):
     if sqlite_path.find("///", 7) > 0 and sqlite_path.find("////", 7) == -1 and sqlite_path.find(":", 7) == -1:
         return sqlite_path.replace("///", ("///"+os.getcwd()+"/"), 1)
+
+def checkDefaultAdminSecret(adminSecret):
+    if adminSecret == "$5$rounds=549561$kWqFvPNTcBsl.Kle$ONikf.BJtqKKFTZbUtVmwZn0nDdwrsHhjyqgxRlUNw4":
+        print(bcolors.WARNING + ascii_warning + bcolors.ENDC)
+        print(bcolors.FAIL + "You are using 'admin' as admin secret\n" + bcolors.ENDC)
+        print("Please generate new one with tools.passwordHashGenerator.generatePasswordHash()")
+        print("You can call it typing the following command in your terminal:")
+        print(bcolors.OKBLUE + "\n"
+              "python -c 'from linkero.tools.passwordHashGenerator import generatePasswordHash; generatePasswordHash()'"
+              + "\n" + bcolors.ENDC)
 
 if os.name == 'nt' and platform.release() == '10' and platform.version() >= '10.0.14393':
     # Fix ANSI color in Windows 10 version 10.0.14393 (Windows Anniversary Update)

@@ -8,7 +8,8 @@ from flask_httpauth import HTTPBasicAuth
 from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
-from .common import printWellcome, bcolors, loadConfig, loadMode, resolveRelativeWorkingDirectory
+from .common import printWellcome, bcolors, loadConfig, loadMode, resolveRelativeWorkingDirectory, \
+    checkDefaultAdminSecret
 import logging
 import re
 
@@ -31,6 +32,7 @@ try:
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = config["app"]["commitOnTeardown"]
     tokenLife = config["tokenLife"]  # In seconds
     adminSecret = config["adminSecret"]
+    checkDefaultAdminSecret(adminSecret)
     debug = config["debug"]
 except KeyError:
     print(bcolors.WARNING+"Misformed config.json!"+bcolors.ENDC)
