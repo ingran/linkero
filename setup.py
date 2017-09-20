@@ -14,7 +14,43 @@ def requirements():
     return requirements_list
 
 long_description = """
-Restful API for external requests
+Linkero is compatible with **Python-2** and **Python-3**.
+
+************************************
+What can I do with Linkero?
+************************************
+
+- Run REST API server
+- Mount your Python developments or wrappers as API REST service. Only spend time developing your APIs behaviour.
+- Add new APIs easily to already existing gateway development.
+- Generate Public APIs.
+- Generate Private APIs.
+    - Security using user and password authentication.
+    - Security using token.
+    - Grant privileges to desired APIs or only a group of calls of API to specific users.
+- User accounts persistence using SQLite DB.
+- Integration with other WSGI (Web Server Gateway Interface):
+    - Gevent_
+    - Waitress_
+
+.. _Gevent: https://github.com/gevent/gevent
+.. _Waitress: https://github.com/Pylons/waitress
+
+
+Installation
+============
+
+You can install or upgrade linkero with:
+
+- ``$ pip install linkero --upgrade``
+
+Or you can install from source with:
+
+- ``$ git clone https://github.com/ingran/linkero.git --recursive``
+
+- ``$ cd linkero``
+
+- ``$ pip install .``
    """
 
 setup(
