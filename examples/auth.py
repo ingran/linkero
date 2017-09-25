@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+#https://github.com/miguelgrinberg/REST-auth
+
 import os
 from flask import Flask, abort, request, jsonify, g, url_for
 from flask_sqlalchemy import SQLAlchemy

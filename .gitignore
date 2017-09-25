@@ -2,3 +2,9 @@ __pycache__/
 *.pyc
 .idea/
 *.sqlite
+dist
+build
+linkero.egg-info
+config.json
+!linkero/config/config.json
+!examples/testPrivAPI/config/config.json

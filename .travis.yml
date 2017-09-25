@@ -4,11 +4,15 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
-  - "nightly" # currently points to 3.7-dev
+  - "3.6"
+  #- "nightly" # currently points to 3.7-dev
 # command to install dependencies
-install: "pip install -r requirements.txt"
+install:
+  - "pip install ."
+  - "pip install -r requirements.txt"
 # command to run tests
 script: 
     - "python tools.py < ./.travis/tools/tools_test0.txt"
     - "python tools.py < ./.travis/tools/tools_test1.txt"
+    - "python ./.travis/linkero/linkero_test0.py"
     - "python ./.travis/linkero/linkero_test0.py"

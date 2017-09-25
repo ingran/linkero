@@ -1,8 +1,21 @@
 # -*- coding: utf-8 -*-
 
-from tools.passwordHashGenerator import generatePasswordHash
-from core.common import bcolors
-from submodules.SimplePythonTools.common import askFor
+from linkero.tools.passwordHashGenerator import generatePasswordHash
+from linkero.core.common import bcolors
+
+def askFor(request, nOptions):
+    while True:
+        try:
+            option_selected = int(input(request))
+            # Check if input is in range
+            if option_selected in range(1, nOptions) or option_selected == 0 or option_selected == -1:
+                break
+            else:
+                print("Out of range. Try again")
+        except ValueError:
+            print("Introduced value is not a number")
+
+    return option_selected
 
 def switch(x):
     return {

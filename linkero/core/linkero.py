@@ -8,7 +8,8 @@ from flask_httpauth import HTTPBasicAuth
 from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
-from core.common import printWellcome, bcolors, loadConfig, loadMode
+from .common import printWellcome, bcolors, loadConfig, loadMode, resolveRelativeWorkingDirectory, \
+    checkDefaultAdminSecret
 import logging
 import re
 
@@ -27,10 +28,11 @@ else:
 config = loadConfig(logger)
 try:
     app.config['SECRET_KEY'] = config["app"]["secretKey"]
-    app.config['SQLALCHEMY_DATABASE_URI'] = config["app"]["databaseUri"]
+    app.config['SQLALCHEMY_DATABASE_URI'] = resolveRelativeWorkingDirectory(config["app"]["databaseUri"])
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = config["app"]["commitOnTeardown"]
     tokenLife = config["tokenLife"]  # In seconds
     adminSecret = config["adminSecret"]
+    checkDefaultAdminSecret(adminSecret)
     debug = config["debug"]
 except KeyError:
     print(bcolors.WARNING+"Misformed config.json!"+bcolors.ENDC)
@@ -146,11 +148,10 @@ def getResourceURL(endpoint, selector_name = None, selector_value = None, absolu
 
 
 def createDB():
-    db_path = str(app.config['SQLALCHEMY_DATABASE_URI'].split('//')[1])
-    file_path = os.path.dirname(os.path.realpath(__file__))
-    if not os.path.exists(file_path + db_path):
+    db_path = str(app.config['SQLALCHEMY_DATABASE_URI'].split('///')[1])
+    if not os.path.exists(db_path):
         print(bcolors.WARNING + "Creating SQlite Database" + bcolors.ENDC)
-        print(bcolors.OKBLUE + file_path + db_path + bcolors.ENDC)
+        print(bcolors.OKBLUE + db_path + bcolors.ENDC)
         db.create_all()
 
 def run():

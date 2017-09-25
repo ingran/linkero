@@ -1,44 +1,47 @@
 # Linkero
-## Copyright © 2016 Ingran Engineering ###
-
-<!-- ![logo](http://ingran.es:8081/uploads/project/avatar/22/Link_Slash.png) -->
-
-Restful API for external requests
 
 [![Build Status](https://travis-ci.org/ingran/linkero.svg?branch=master)](https://travis-ci.org/ingran/linkero)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2b63ba733fed4213b97361f0593d3a3b)](https://www.codacy.com/app/RDCH106/linkero?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ingran/linkero&amp;utm_campaign=Badge_Grade)
 
-### Requeriments
+<!-- ![logo](http://ingran.es:8081/uploads/project/avatar/22/Link_Slash.png) -->
 
-Linkero is compatible with Python 2 and Python 3. 
-The support for Python 2 will be deprecated in future releases and it is recommendable migrate to Python 3
+Framework focused in Restful API development for external requests powered by [Ingran Engineering](https://ingran.es) under [AGPL-3.0](https://github.com/RDCH106/linkero/blob/master/LICENSE) license.
 
-#### **Python 2**
+Linkero is compatible with Python-2 and Python-3.
 
-* Install last version of Python 2
-* Install flask-restful Python library
-* Install flask-sqlalchemy Python library
-* Install flask-httpauth Python library
-* Install passlib Python library
-* Install itsdangerous Python library
-* Install gevent Python library
-* Install waitress Python library
+### What can I do with Linkero?
 
-#### **Python 3**
+- Run REST API server
+- Mount your Python developments or wrappers as API REST service. Only spend time developing your APIs behaviour.
+- Add new APIs easily to already existing gateway development.
+- Generate Public APIs.
+- Generate Private APIs.
+    - Security using user and password authentication.
+    - Security using token.
+    - Grant privileges to desired APIs or only a group of calls of API to specific users.
+- User accounts persistence using SQLite DB.
+- Integration with other WSGI (Web Server Gateway Interface):
+    - [Gevent](https://github.com/gevent/gevent)
+    - [Waitress](https://github.com/Pylons/waitress)
 
-* Install last version of Python 3
-* Install flask-restful Python library
-* Install flask-sqlalchemy Python library
-* Install flask-httpauth Python library
-* Install passlib Python library
-* Install itsdangerous Python library
-* Install gevent Python library
-* Install waitress Python library
+### Intallation
+
+You can install or upgrade linkero with:
+
+`$ pip install linkero --upgrade`
+
+Or you can install from source with:
+
+```
+$ git clone https://github.com/ingran/linkero.git --recursive
+$ cd linkero
+$ pip install .
+```
 
 ### **Documentation**
 
-More information available in the **[WIKI](https://github.com/RDCH106/linkero/wiki/home)**.
+More information available in the **[WIKI](https://github.com/ingran/linkero/wiki/home)**.
 
 ### **Contribution**
 
-Check the **[Contributing](https://github.com/RDCH106/linkero/blob/master/CONTRIBUTING.md)** guide.
+Check the **[Contributing](https://github.com/ingran/linkero/blob/master/CONTRIBUTING.md)** guide.

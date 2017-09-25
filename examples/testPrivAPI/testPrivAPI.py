@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import core.linkero as linkero
+import linkero.core.linkero as linkero
 
 vusers = linkero.config['API']['testPrivAPI']['validUsers']
 

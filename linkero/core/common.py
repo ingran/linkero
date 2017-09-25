@@ -2,11 +2,22 @@
 
 import logging
 import json
-from submodules.SimplePythonTools.common import bcolors
+import platform
 import os
 from shutil import copyfile
+from .ascii import ascii_warning
 
-version = "0.7.2"
+
+class Metadata:
+    def __init__(self):
+        self.__version__ = '0.9.1'
+        self.__author__ = 'Rubén de Celis Hernández'
+
+    def get_version(self):
+        return self.__version__
+    def get_author(self):
+        return self.__author__
+
 
 def printWellcome():
     print(bcolors.HEADER+"")
@@ -22,7 +33,7 @@ def printWellcome():
     print("              |___/                    "+bcolors.WARNING+"   '.||.'   "+bcolors.OKBLUE)
     print(""+bcolors.ENDC)
     print("                                        Engineering  ")
-    print(" v"+version+bcolors.HEADER+"")
+    print(" v"+Metadata().get_version()+bcolors.HEADER+"")
     print("-----------------------------------------------------")
     print(""+bcolors.ENDC)
 
@@ -60,3 +71,33 @@ def loadConfig(logger):
 
     print(bcolors.ENDC)
     return (config)
+
+def resolveRelativeWorkingDirectory(sqlite_path):
+    if sqlite_path.find("///", 7) > 0 and sqlite_path.find("////", 7) == -1 and sqlite_path.find(":", 7) == -1:
+        return sqlite_path.replace("///", ("///"+os.getcwd()+"/"), 1)
+
+def checkDefaultAdminSecret(adminSecret):
+    if adminSecret == "$5$rounds=549561$kWqFvPNTcBsl.Kle$ONikf.BJtqKKFTZbUtVmwZn0nDdwrsHhjyqgxRlUNw4":
+        print(bcolors.WARNING + ascii_warning + bcolors.ENDC)
+        print(bcolors.FAIL + "You are using 'admin' as admin secret\n" + bcolors.ENDC)
+        print("Please generate new one with tools.passwordHashGenerator.generatePasswordHash()")
+        print("You can call it typing the following command in your terminal:")
+        print(bcolors.OKBLUE + "\n"
+              "python -c 'from linkero.tools.passwordHashGenerator import generatePasswordHash; generatePasswordHash()'"
+              + "\n" + bcolors.ENDC)
+
+if os.name == 'nt' and platform.release() == '10' and platform.version() >= '10.0.14393':
+    # Fix ANSI color in Windows 10 version 10.0.14393 (Windows Anniversary Update)
+    import ctypes
+    kernel32 = ctypes.windll.kernel32
+    kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'

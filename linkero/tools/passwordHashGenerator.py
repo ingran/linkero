@@ -2,7 +2,7 @@
 
 import sys
 import getpass
-from core.common import bcolors
+from linkero.core.common import bcolors
 from passlib.apps import custom_app_context as pwd_context
 
 def generatePasswordHash():
