@@ -7,3 +7,4 @@ build
 linkero.egg-info
 config.json
 !linkero/config/config.json
+!examples/testPrivAPI/config/config.json
