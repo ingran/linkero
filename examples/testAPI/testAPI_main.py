@@ -8,13 +8,15 @@ from requests import post
 # ++++++++++++++++++++++++++++++++++++++++++++++++++
 # Delete current DB and generate new user demo:demo
 # ++++++++++++++++++++++++++++++++++++++++++++++++++
-os.remove('config/db.sqlite')
+if os.path.isfile('config/db.sqlite'):
+    os.remove('config/db.sqlite')
 def worker():
     post('http://localhost:5000/api/users', data={"username": "demo", "password": "demo", "secret": "admin"})
     print(bcolors.WARNING + "\nGranted access for user 'demo' with password 'demo'\n" + bcolors.ENDC)
 
 t = threading.Timer(5, worker)  # Generate new user after 5 seconds
-t.start()
+if os.path.isfile('config/config.json'):   # Thread only starts if config.json exists
+    t.start()
 # ++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # 1) Linkero Core
