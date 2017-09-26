@@ -27,7 +27,7 @@ Linkero is compatible with Python-2 and Python-3.
     - [Gevent](https://github.com/gevent/gevent)
     - [Waitress](https://github.com/Pylons/waitress)
 
-### Intallation
+### Installation
 
 You can install or upgrade linkero with:
 
