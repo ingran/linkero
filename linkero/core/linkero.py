@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, g, url_for
 from flask_restful import reqparse, abort, Api, Resource, fields, marshal
 from flask_sqlalchemy import SQLAlchemy
 from flask_httpauth import HTTPBasicAuth
+from flask_cors import CORS
 from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
@@ -33,6 +34,8 @@ try:
     tokenLife = config["tokenLife"]  # In seconds
     adminSecret = config["adminSecret"]
     checkDefaultAdminSecret(adminSecret)
+    cors = config["CORS"]["enable"]
+    origins = config["CORS"]["origins"]
     debug = config["debug"]
 except KeyError:
     print(bcolors.WARNING+"Misformed config.json!"+bcolors.ENDC)
@@ -42,6 +45,8 @@ except KeyError:
 db = SQLAlchemy(app)
 auth = HTTPBasicAuth()
 api = Api(app)
+if cors:
+    CORS(app, origins=origins)
 
 
 class User(db.Model):

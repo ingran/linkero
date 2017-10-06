@@ -18,6 +18,10 @@
         "certificate" : "ssl/cert_file.crt",
         "key" : "ssl/key_file.key"
     },
+    "CORS" : {
+        "enable" : true,
+        "origins" : "*"
+    },
     "gevent" : {
         "spawn" : 10000
     },
