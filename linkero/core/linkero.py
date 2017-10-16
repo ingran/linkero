@@ -10,7 +10,7 @@ from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 from .common import printWellcome, bcolors, loadConfig, loadMode, resolveRelativeWorkingDirectory, \
-    checkDefaultAdminSecret
+    checkDefaultAdminSecret, setAccessLog
 import logging
 import re
 
@@ -37,6 +37,7 @@ try:
     cors = config["CORS"]["enable"]
     origins = config["CORS"]["origins"]
     debug = config["debug"]
+    setAccessLog(config["app"]["accessLog"])
 except KeyError:
     print(bcolors.WARNING+"Misformed config.json!"+bcolors.ENDC)
     exit()

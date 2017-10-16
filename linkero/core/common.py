@@ -10,7 +10,7 @@ from .ascii import ascii_warning
 
 class Metadata:
     def __init__(self):
-        self.__version__ = '0.9.3'
+        self.__version__ = '0.9.4'
         self.__author__ = 'Rubén de Celis Hernández'
 
     def get_version(self):
@@ -71,6 +71,10 @@ def loadConfig(logger):
 
     print(bcolors.ENDC)
     return (config)
+
+def setAccessLog(value):
+    log = logging.getLogger('werkzeug')
+    log.disabled = not value
 
 def resolveRelativeWorkingDirectory(sqlite_path):
     if sqlite_path.find("///", 7) > 0 and sqlite_path.find("////", 7) == -1 and sqlite_path.find(":", 7) == -1:
