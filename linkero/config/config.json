@@ -24,7 +24,8 @@
         "origins" : "*"
     },
 	"gevent" : {
-       	"spawn" : 10000
+		"spawn" : 10000,
+		"accessLog" : true
 	},
 	"waitress" : {
         "threads" : 4,
