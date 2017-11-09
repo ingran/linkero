@@ -19,7 +19,7 @@ If you fix a bug or add a cool feature, please submit a pull request!
 
 ### Code Style
 
-*  Use 2 spaces for indentation
+*  Use 4 spaces for indentation
 *  Use comments whenever the code's meaning is not obvious
 *  When in doubt, try to match the style in existing source files
 
