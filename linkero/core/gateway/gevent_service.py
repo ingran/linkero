@@ -10,14 +10,14 @@ def run(app):
     linkero.printWellcome()
     linkero.createDB()
     if linkero.config["SSL"]["activate"]:
-        gevert_server = WSGIServer((linkero.config["host"]["ip"],
+        gevent_server = WSGIServer((linkero.config["host"]["ip"],
                                     int(os.environ.get('PORT', linkero.config["host"]["port"]))),
                                     app, spawn=Pool(linkero.config["gevent"]["spawn"]),
                                     log='default' if (linkero.config["gevent"]["accessLog"] == True) else None,
                                     keyfile=linkero.config["SSL"]["key"], certfile=linkero.config["SSL"]["certificate"])
     else:
-        gevert_server = WSGIServer((linkero.config["host"]["ip"],
+        gevent_server = WSGIServer((linkero.config["host"]["ip"],
                                     int(os.environ.get('PORT', linkero.config["host"]["port"]))),
                                     app, spawn=Pool(linkero.config["gevent"]["spawn"],
                                     log = 'default' if (linkero.config["gevent"]["accessLog"] == True) else None))
-    gevert_server.serve_forever()
+    gevent_server.serve_forever()
