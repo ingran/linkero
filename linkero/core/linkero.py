@@ -10,7 +10,7 @@ from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 from .common import printWellcome, bcolors, loadConfig, loadMode, resolveRelativeWorkingDirectory, \
-    checkDefaultAdminSecret
+    checkDefaultAdminSecret, setAccessLog
 import logging
 import re
 
@@ -37,6 +37,7 @@ try:
     cors = config["CORS"]["enable"]
     origins = config["CORS"]["origins"]
     debug = config["debug"]
+    setAccessLog(config["app"]["accessLog"])
 except KeyError:
     print(bcolors.WARNING+"Misformed config.json!"+bcolors.ENDC)
     exit()
@@ -76,6 +77,7 @@ class User(db.Model):
             return None  # invalid token
         user = User.query.get(data['id'])
         return user
+
 
 @auth.verify_password
 def verify_password(username_or_token, password):
@@ -123,10 +125,12 @@ def get_auth_token():
     token = g.user.generate_auth_token(tokenLife)
     return jsonify({'token': token.decode('ascii'), 'duration': tokenLife})
 
+
 @app.route('/api/resource')
 @auth.login_required
 def get_resource():
     return jsonify({'data': 'Hello, %s!' % g.user.username})
+
 
 def checkUser(vusers):
     # Check if it is a username or token auth
@@ -136,9 +140,11 @@ def checkUser(vusers):
     else:
         return bool(auth.username() in vusers)
 
+
 def getDomain(request):
     pattern_url_base = re.compile("(http|https):\/\/[a-zA-Z0-9_.]+:[0-9]*")
     return pattern_url_base.search(str(request)).group()
+
 
 def getResourceURL(endpoint, selector_name = None, selector_value = None, absolute = False):
     if selector_name is None and selector_value is None:
@@ -159,13 +165,14 @@ def createDB():
         print(bcolors.OKBLUE + db_path + bcolors.ENDC)
         db.create_all()
 
+
 def run():
     printWellcome()
     createDB()
     if config["SSL"]["activate"]:
-        app.run(host=config["host"]["ip"], port=config["host"]["port"], debug=debug,
+        app.run(host=config["host"]["ip"], port=int(os.environ.get('PORT', config["host"]["port"])), debug=debug,
                 processes=config["host"]["processes"], threaded=config["host"]["threaded"],
                 ssl_context=(config["SSL"]["certificate"], config["SSL"]["key"]))
     else:
-        app.run(host=config["host"]["ip"], port=config["host"]["port"], debug=debug,
+        app.run(host=config["host"]["ip"], port=int(os.environ.get('PORT', config["host"]["port"])), debug=debug,
                 processes=config["host"]["processes"], threaded=config["host"]["threaded"])
