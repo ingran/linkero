@@ -66,7 +66,7 @@ setup(
     author_email = 'contact@rdch106.hol.es',
     url = 'https://github.com/ingran/linkero',
     download_url = 'https://github.com/ingran/linkero/archive/v'+metadata.get_version()+'.tar.gz',
-    keywords = ['framework', 'rest-api', 'restful-api', 'web-services'],
+    keywords = 'framework rest-api restful-api web-services',
     classifiers = ['Programming Language :: Python',
                    'Programming Language :: Python :: 2.7',
                    'Programming Language :: Python :: 3.3',
