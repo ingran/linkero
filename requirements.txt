@@ -6,3 +6,4 @@ passlib==1.6.5
 itsdangerous==0.24
 gevent>=1.2.1
 waitress>=1.0.2
+colorama>=0.3.7

@@ -13,6 +13,13 @@ from .common import printWellcome, bcolors, loadConfig, loadMode, resolveRelativ
     checkDefaultAdminSecret, setAccessLog
 import logging
 import re
+from colorama import init, deinit
+import atexit
+
+
+if 'PYCHARM_HOSTED' not in os.environ:  # Exclude PyCharm IDE from colorama init
+    init()
+    atexit.register(deinit)
 
 
 # initialization
