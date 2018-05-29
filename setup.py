@@ -59,7 +59,7 @@ setup(
     package_data={'linkero': ['config/config.json']},
     install_requires=requirements(),
     version = metadata.get_version(),
-    license = 'AGPL v3',
+    license = 'LGPL v3',
     description = 'Restful API for external requests',
     long_description= long_description,
     author = metadata.get_author(),
