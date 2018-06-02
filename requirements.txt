@@ -4,6 +4,6 @@ flask-httpauth==3.1.2
 flask-cors==3.0.3
 passlib==1.6.5
 itsdangerous==0.24
-gevent>=1.2.1
+gevent>=1.2.1,<=1.2.2
 waitress>=1.0.2
 colorama>=0.3.7
