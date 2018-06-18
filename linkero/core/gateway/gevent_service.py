@@ -18,6 +18,6 @@ def run(app):
     else:
         gevent_server = WSGIServer((linkero.config["host"]["ip"],
                                     int(os.environ.get('PORT', linkero.config["host"]["port"]))),
-                                    app, spawn=Pool(linkero.config["gevent"]["spawn"],
-                                    log = 'default' if (linkero.config["gevent"]["accessLog"] == True) else None))
+                                    app, spawn=Pool(linkero.config["gevent"]["spawn"]),
+                                    log = 'default' if (linkero.config["gevent"]["accessLog"] == True) else None)
     gevent_server.serve_forever()
