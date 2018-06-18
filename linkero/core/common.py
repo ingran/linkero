@@ -10,7 +10,7 @@ from .ascii import ascii_warning
 
 class Metadata:
     def __init__(self):
-        self.__version__ = '0.9.9'
+        self.__version__ = '0.9.10'
         self.__author__ = 'Rubén de Celis Hernández'
 
     def get_version(self):
