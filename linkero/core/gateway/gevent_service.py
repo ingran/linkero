@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import linkero.core.linkero as linkero
-from gevent.wsgi import WSGIServer
+from gevent.pywsgi import WSGIServer
 from gevent.pool import Pool
 import os
 
