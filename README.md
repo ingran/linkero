@@ -3,6 +3,7 @@
 [![PyPI](https://img.shields.io/pypi/v/linkero.svg)](https://pypi.python.org/pypi/linkero)
 [![PyPI](https://img.shields.io/pypi/pyversions/linkero.svg)](https://pypi.python.org/pypi/linkero)
 [![PyPI](https://img.shields.io/pypi/l/linkero.svg)](https://github.com/ingran/linkero/blob/master/LICENSE)
+[![Pypy](https://img.shields.io/badge/PyPy-2.7%20%7C%203.5-ff69b4.svg)](https://pypy.org/)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2b63ba733fed4213b97361f0593d3a3b)](https://www.codacy.com/app/RDCH106/linkero?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ingran/linkero&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/ingran/linkero.svg?branch=master)](https://travis-ci.org/ingran/linkero)
 
