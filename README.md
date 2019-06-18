@@ -9,7 +9,7 @@
 
 <!-- ![logo](http://ingran.es:8081/uploads/project/avatar/22/Link_Slash.png) -->
 
-Framework focused in Restful API development for external requests powered by [Ingran Engineering](https://ingran.es) under [LGPL-3.0](https://github.com/RDCH106/linkero/blob/master/LICENSE) license.
+Framework focused in Restful API development for external requests powered by [Ingran Engineering](https://web.archive.org/web/20181203153543/https://ingran.es/) under [LGPL-3.0](https://github.com/RDCH106/linkero/blob/master/LICENSE) license.
 
 Linkero is compatible with Python-2 and Python-3.
 
