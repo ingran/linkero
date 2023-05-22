@@ -170,7 +170,8 @@ def createDB():
     if not os.path.exists(db_path):
         print(bcolors.WARNING + "Creating SQlite Database" + bcolors.ENDC)
         print(bcolors.OKBLUE + db_path + bcolors.ENDC)
-        db.create_all()
+        with app.app_context():
+            db.create_all()
 
 
 def run():
